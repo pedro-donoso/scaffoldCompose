@@ -9,8 +9,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.Create
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -53,16 +57,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Material3BottomAppBar() {
-    BottomAppBar(
-        containerColor = MaterialTheme.colorScheme.primary,
-        contentColor = MaterialTheme.colorScheme.onPrimary
-    ) {
-        Text(text = "Bottom App Bar")
-    }
-}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Material3TopAppBar(){
@@ -100,3 +94,30 @@ fun Material3TopAppBar(){
         }
     )
 }
+
+@Composable
+fun Material3BottomAppBar() {
+    BottomAppBar(
+        containerColor = MaterialTheme.colorScheme.primary,
+        contentColor = MaterialTheme.colorScheme.onPrimary,
+        actions = {
+            IconButton(onClick = {}) {
+                Icon(
+                    imageVector = Icons.Filled.Favorite,
+                    contentDescription = null)
+            }
+            IconButton(onClick = {}) {
+                Icon(
+                    imageVector = Icons.Filled.AccountCircle,
+                    contentDescription = null)
+            }
+            IconButton(onClick = {}) {
+                Icon(
+                    imageVector = Icons.Filled.Settings,
+                    contentDescription = null)
+            }
+        }
+    )
+}
+
+
