@@ -54,6 +54,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.DialogProperties
 import coil.compose.AsyncImage
+import com.example.material3app.components.BottomNavigationBar
 import com.example.material3app.ui.theme.Material3AppTheme
 
 //extiende de ComponentActivity para poder usar el setContent
@@ -96,7 +97,7 @@ class MainActivity : ComponentActivity() {
                         Material3TopAppBar()
                     },
                     bottomBar = {
-                        Material3BottomAppBar()
+                        BottomNavigationBar()
                     }
                 ) { paddingValues ->
                     //contenido de la pantalla
