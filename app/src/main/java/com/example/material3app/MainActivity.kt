@@ -38,6 +38,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.example.material3app.ui.theme.Material3AppTheme
 
 //extiende de ComponentActivity para poder usar el setContent
@@ -130,20 +131,26 @@ fun Material3TopAppBar() {
 
 @Composable
 fun MaterialDogCard() {
-    Card(onClick = { },
+    Card(
+        onClick = { },
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.secondaryContainer,
             contentColor = MaterialTheme.colorScheme.onSecondaryContainer
         ),
         modifier = Modifier
             .padding(horizontal = 10.dp, vertical = 15.dp)
-        ) {
-        Box(modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp)
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
         ) {
             Column {
-                Text(text = "This is my Dog")
+                val dogUrl = "https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg"
+                AsyncImage(
+                    model = dogUrl,
+                    contentDescription = null
+                )
             }
         }
     }
