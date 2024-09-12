@@ -12,11 +12,13 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AddCircle
+import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -38,9 +40,20 @@ class MainActivity : ComponentActivity() {
             Material3AppTheme {
                 //estructura de la pantalla
                 Scaffold(
+
+                    floatingActionButton = {
+                        FloatingActionButton(onClick = {}) {
+                            Icon(
+                                imageVector = Icons.Filled.Call,
+                                contentDescription = null
+                            )
+                        }
+                    },
+
+
                     //barra de navegacion
                     topBar = {
-                       Material3TopAppBar()
+                        Material3TopAppBar()
                     },
                     bottomBar = {
                         Material3BottomAppBar()
@@ -59,26 +72,29 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Material3TopAppBar(){
+fun Material3TopAppBar() {
     TopAppBar(
         //colores de la barra de navegacion
         navigationIcon = {
             IconButton(onClick = {}) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = null)
+                    contentDescription = null
+                )
             }
         },
         actions = {
             IconButton(onClick = {}) {
                 Icon(
                     imageVector = Icons.Filled.Create,
-                    contentDescription = null)
+                    contentDescription = null
+                )
             }
             IconButton(onClick = {}) {
                 Icon(
                     imageVector = Icons.Filled.Add,
-                    contentDescription = null)
+                    contentDescription = null
+                )
             }
         },
 
@@ -104,19 +120,23 @@ fun Material3BottomAppBar() {
             IconButton(onClick = {}) {
                 Icon(
                     imageVector = Icons.Filled.Favorite,
-                    contentDescription = null)
+                    contentDescription = null
+                )
             }
             IconButton(onClick = {}) {
                 Icon(
                     imageVector = Icons.Filled.AccountCircle,
-                    contentDescription = null)
+                    contentDescription = null
+                )
             }
             IconButton(onClick = {}) {
                 Icon(
                     imageVector = Icons.Filled.Settings,
-                    contentDescription = null)
+                    contentDescription = null
+                )
             }
         }
+
     )
 }
 
