@@ -33,13 +33,13 @@ class MainActivity : ComponentActivity() {
                         TopAppBar(
                             //colores de la barra de navegacion
                             colors = TopAppBarDefaults.topAppBarColors(
-                                containerColor = Color.Blue,
-                                titleContentColor = Color.White
+                                containerColor = MaterialTheme.colorScheme.primary,
+                                titleContentColor = MaterialTheme.colorScheme.onPrimary
                             ),
                             title = {
-                            //titulo de la barra de navegacion
-                            Text(text = "Material 3 App")
-                        })
+                                //titulo de la barra de navegacion
+                                Text(text = "Material 3 App")
+                            })
                     }
                 ) { paddingValues ->
                     //contenido de la pantalla
