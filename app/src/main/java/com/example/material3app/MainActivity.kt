@@ -21,13 +21,13 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.example.material3app.ui.theme.Material3AppTheme
 
 //extiende de ComponentActivity para poder usar el setContent
 class MainActivity : ComponentActivity() {
-    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -37,38 +37,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     //barra de navegacion
                     topBar = {
-                        TopAppBar(
-                            //colores de la barra de navegacion
-                            navigationIcon = {
-                                IconButton(onClick = {}) {
-                                    Icon(
-                                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                        contentDescription = null)
-                                }
-                            },
-                            actions = {
-                                IconButton(onClick = {}) {
-                                    Icon(
-                                        imageVector = Icons.Filled.Create,
-                                        contentDescription = null)
-                                }
-                                IconButton(onClick = {}) {
-                                    Icon(
-                                        imageVector = Icons.Filled.Add,
-                                        contentDescription = null)
-                                }
-                            },
-
-                            colors = TopAppBarDefaults.topAppBarColors(
-                                containerColor = MaterialTheme.colorScheme.primary,
-                                titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                                navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
-                                actionIconContentColor = MaterialTheme.colorScheme.onPrimary
-                            ),
-                            title = {
-                                //titulo de la barra de navegacion
-                                Text(text = "Material 3 App")
-                            })
+                       Material3TopAppBar()
                     }
                 ) { paddingValues ->
                     //contenido de la pantalla
@@ -80,4 +49,42 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun Material3TopAppBar(){
+    TopAppBar(
+        //colores de la barra de navegacion
+        navigationIcon = {
+            IconButton(onClick = {}) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = null)
+            }
+        },
+        actions = {
+            IconButton(onClick = {}) {
+                Icon(
+                    imageVector = Icons.Filled.Create,
+                    contentDescription = null)
+            }
+            IconButton(onClick = {}) {
+                Icon(
+                    imageVector = Icons.Filled.Add,
+                    contentDescription = null)
+            }
+        },
+
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primary,
+            titleContentColor = MaterialTheme.colorScheme.onPrimary,
+            navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
+            actionIconContentColor = MaterialTheme.colorScheme.onPrimary
+        ),
+        title = {
+            //titulo de la barra de navegacion
+            Text(text = "Material 3 App")
+        }
+    )
 }
