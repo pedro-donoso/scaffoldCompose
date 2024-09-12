@@ -58,7 +58,9 @@ fun BottomNavigationBar() {
                     Text(text = navigationItem.title)
                 },
                 selected = index == selectedItemIndex,
-                onClick = { },
+                onClick = {
+                    selectedItemIndex = index
+                },
                 icon = {
                     Icon(
                         imageVector =
