@@ -71,6 +71,10 @@ class MainActivity : ComponentActivity() {
                     mutableStateOf(false)
                 }
 
+                var selectedItemIndex by remember {
+                    mutableStateOf(0)
+                }
+
                 if (showDialog) {
                     Material3AlertDialog(
                         onDismiss = {
@@ -97,7 +101,11 @@ class MainActivity : ComponentActivity() {
                         Material3TopAppBar()
                     },
                     bottomBar = {
-                        BottomNavigationBar()
+                        BottomNavigationBar(
+                            onItemSelected = {actualIndex ->
+                                selectedItemIndex = actualIndex
+                            }
+                        )
                     }
                 ) { paddingValues ->
                     //contenido de la pantalla
@@ -114,8 +122,21 @@ class MainActivity : ComponentActivity() {
                                 .verticalScroll(rememberScrollState())
                         ) {
                             //agrega tarjetas
-                            MaterialDogCard()
-                            MaterialDogCard()
+                            when(selectedItemIndex) {
+                                0 -> {
+                                    MaterialDogCard()
+                                    MaterialDogCard()
+                                }
+                                1 -> {
+                                    Text(text = "Favorites")
+                                }
+                                2 -> {
+                                    Text(text = "Notifications")
+                                }
+                                3 -> {
+                                    Text(text = "Settings")
+                                }
+                            }
                         }
                     }
                 }

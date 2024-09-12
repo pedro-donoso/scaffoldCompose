@@ -22,7 +22,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
 
 @Composable
-fun BottomNavigationBar() {
+fun BottomNavigationBar(
+    onItemSelected: (selectedIndex: Int) -> Unit
+) {
 
     var selectedItemIndex by remember {
         mutableIntStateOf(0)
@@ -60,6 +62,7 @@ fun BottomNavigationBar() {
                 selected = index == selectedItemIndex,
                 onClick = {
                     selectedItemIndex = index
+                    onItemSelected(selectedItemIndex)
                 },
                 icon = {
                     Icon(
