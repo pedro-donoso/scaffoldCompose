@@ -156,13 +156,19 @@ fun MaterialDogCard() {
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.fillMaxWidth()
-                        .fillMaxHeight(0.4f)
+                        .fillMaxHeight(0.5f)
                 )
                 Text(
                     text = "This is my Dog!",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(horizontal = 5.dp, vertical = 10.dp)
+                )
+                val description = "Los perros, esos seres peludos y leales, han sido nuestros compañeros desde tiempos inmemoriales que nos enseñan sobre la lealtad, la alegría y la amistad incondicional. Los perros nos recuerdan que la vida es mejor cuando compartimos momentos con quienes amamos."
+                Text(
+                    text = description,
+                    fontSize = 15.sp,
+                    modifier = Modifier.padding(horizontal = 5.dp, vertical = 5.dp)
                 )
             }
         }
