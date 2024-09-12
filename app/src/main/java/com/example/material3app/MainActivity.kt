@@ -57,6 +57,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            //tema de la aplicacion
             Material3AppTheme {
 
                 var showDialog by remember {
