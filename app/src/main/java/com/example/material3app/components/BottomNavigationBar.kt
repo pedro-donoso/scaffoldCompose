@@ -9,14 +9,24 @@ import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
 
 @Composable
 fun BottomNavigationBar() {
+
+    var selectedItemIndex by remember {
+        mutableIntStateOf(0)
+    }
 
     val navigationList = listOf(
         NavigationItem(
@@ -47,9 +57,16 @@ fun BottomNavigationBar() {
                 label = {
                     Text(text = navigationItem.title)
                 },
-                selected = false,
+                selected = index == selectedItemIndex,
                 onClick = { },
-                icon = { }
+                icon = {
+                    Icon(
+                        imageVector =
+                        if (selectedItemIndex == index) navigationItem.selectedIcon
+                        else navigationItem.unselectedIcon,
+                        contentDescription = navigationItem.title
+                    )
+                }
             )
         }
     }
