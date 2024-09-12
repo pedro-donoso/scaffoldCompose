@@ -38,10 +38,15 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -139,8 +144,14 @@ fun Material3TopAppBar() {
 
 @Composable
 fun MaterialDogCard() {
+
+    var expanded by remember {
+        mutableStateOf(false) }
+
     Card(
-        onClick = { },
+        onClick = {
+            expanded = !expanded
+        },
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.secondaryContainer,
             contentColor = MaterialTheme.colorScheme.onSecondaryContainer
@@ -172,6 +183,8 @@ fun MaterialDogCard() {
                 Text(
                     text = description,
                     fontSize = 15.sp,
+                    maxLines = if (expanded) Int.MAX_VALUE else 2,
+                    overflow = TextOverflow.Ellipsis,
                     modifier = Modifier.padding(horizontal = 5.dp, vertical = 5.dp)
                 )
             }
