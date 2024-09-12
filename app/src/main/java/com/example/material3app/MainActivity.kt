@@ -37,6 +37,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.material3app.ui.theme.Material3AppTheme
@@ -146,10 +147,12 @@ fun MaterialDogCard() {
                 .height(200.dp)
         ) {
             Column {
-                val dogUrl = "https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg"
+                val dogUrl = "https://images.unsplash.com/photo-1452441271666-5d998aa2f6cc?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 AsyncImage(
                     model = dogUrl,
-                    contentDescription = null
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxWidth()
                 )
             }
         }
