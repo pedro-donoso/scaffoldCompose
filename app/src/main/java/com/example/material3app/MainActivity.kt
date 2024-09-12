@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Create
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -41,14 +43,27 @@ class MainActivity : ComponentActivity() {
                                 IconButton(onClick = {}) {
                                     Icon(
                                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                        contentDescription = null
-                                    )
+                                        contentDescription = null)
                                 }
                             },
+                            actions = {
+                                IconButton(onClick = {}) {
+                                    Icon(
+                                        imageVector = Icons.Filled.Create,
+                                        contentDescription = null)
+                                }
+                                IconButton(onClick = {}) {
+                                    Icon(
+                                        imageVector = Icons.Filled.Add,
+                                        contentDescription = null)
+                                }
+                            },
+
                             colors = TopAppBarDefaults.topAppBarColors(
                                 containerColor = MaterialTheme.colorScheme.primary,
                                 titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                                navigationIconContentColor = MaterialTheme.colorScheme.onPrimary
+                                navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
+                                actionIconContentColor = MaterialTheme.colorScheme.onPrimary
                             ),
                             title = {
                                 //titulo de la barra de navegacion
