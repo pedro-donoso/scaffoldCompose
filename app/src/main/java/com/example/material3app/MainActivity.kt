@@ -52,6 +52,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.DialogProperties
 import coil.compose.AsyncImage
 import com.example.material3app.ui.theme.Material3AppTheme
 
@@ -170,6 +171,14 @@ fun Material3AlertDialog(
     onDismiss: () -> Unit
 ) {
     AlertDialog(
+        properties = DialogProperties(
+            dismissOnBackPress = false,
+            dismissOnClickOutside = false
+        ),
+        containerColor = MaterialTheme.colorScheme.background,
+        titleContentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+        textContentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+        iconContentColor = MaterialTheme.colorScheme.onTertiaryContainer,
         onDismissRequest = onDismiss,
         confirmButton = {
             TextButton(onClick = {
@@ -190,6 +199,12 @@ fun Material3AlertDialog(
         },
         text = {
             Text(text = "Do you want to call my dog?")
+        },
+        icon = {
+            Icon(
+                imageVector = Icons.Filled.Call,
+                contentDescription = null
+            )
         }
     )
 }
