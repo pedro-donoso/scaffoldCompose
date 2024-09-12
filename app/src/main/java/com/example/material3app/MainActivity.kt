@@ -6,17 +6,18 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -49,8 +50,6 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                     },
-
-
                     //barra de navegacion
                     topBar = {
                         Material3TopAppBar()
@@ -63,7 +62,15 @@ class MainActivity : ComponentActivity() {
                     Box(
                         //agrega espacio alrededor del contenido
                         modifier = Modifier.padding(paddingValues)
-                    )
+                    ) {
+                        Column {
+                            for (i in 1..10) {
+                                Card(onClick = { }) {
+                                    Text(text = "Card number $i")
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
