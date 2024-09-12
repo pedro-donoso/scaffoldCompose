@@ -69,7 +69,11 @@ class MainActivity : ComponentActivity() {
                 }
 
                 if (showDialog) {
-                    Material3AlertDialog()
+                    Material3AlertDialog(
+                        onDismiss = {
+                            showDialog = false
+                        }
+                    )
                 }
 
                 //estructura de la pantalla
@@ -161,16 +165,22 @@ fun Material3TopAppBar() {
 }
 
 @Composable
-fun Material3AlertDialog() {
+fun Material3AlertDialog(
+    onDismiss: () -> Unit
+) {
     AlertDialog(
-        onDismissRequest = { },
+        onDismissRequest = onDismiss,
         confirmButton = {
-            TextButton(onClick = { }) {
+            TextButton(onClick = {
+                onDismiss()
+            }) {
                 Text(text = "Aceptar")
             }
         },
         dismissButton = {
-            TextButton(onClick = { }) {
+            TextButton(onClick = {
+                onDismiss()
+            }) {
                 Text(text = "Cancelar")
             }
         },
