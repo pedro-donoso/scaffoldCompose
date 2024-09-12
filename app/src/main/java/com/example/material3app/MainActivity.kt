@@ -10,8 +10,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Create
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -19,15 +19,14 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import com.example.material3app.ui.theme.Material3AppTheme
 
 //extiende de ComponentActivity para poder usar el setContent
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -38,6 +37,9 @@ class MainActivity : ComponentActivity() {
                     //barra de navegacion
                     topBar = {
                        Material3TopAppBar()
+                    },
+                    bottomBar = {
+                        Material3BottomAppBar()
                     }
                 ) { paddingValues ->
                     //contenido de la pantalla
@@ -48,6 +50,16 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+}
+
+@Composable
+fun Material3BottomAppBar() {
+    BottomAppBar(
+        containerColor = MaterialTheme.colorScheme.primary,
+        contentColor = MaterialTheme.colorScheme.onPrimary
+    ) {
+        Text(text = "Bottom App Bar")
     }
 }
 
@@ -84,7 +96,7 @@ fun Material3TopAppBar(){
         ),
         title = {
             //titulo de la barra de navegacion
-            Text(text = "Material 3 App")
+            Text(text = "Mi Aplicacion")
         }
     )
 }
