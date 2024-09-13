@@ -2,9 +2,11 @@ package com.example.material3app.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -53,5 +55,26 @@ fun SettingScreen() {
         )
 
         Spacer(modifier = Modifier.height(30.dp))
+
+        Row {
+            FilterChip(
+                selected = false,
+                onClick = { /*TODO*/ },
+                label = {
+                    Text(text = "Compose")
+                }
+            )
+
+            Spacer(modifier = Modifier.padding(15.dp))
+
+            FilterChip(
+                selected = false,
+                onClick = { /*TODO*/ },
+                label = {
+                    Text(text = "XML")
+                }
+            )
+        }
+
     }
 }
