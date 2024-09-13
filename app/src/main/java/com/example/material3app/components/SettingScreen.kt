@@ -56,10 +56,20 @@ fun SettingScreen() {
 
         Spacer(modifier = Modifier.height(30.dp))
 
+        var composeSelected by remember {
+            mutableStateOf(false)
+        }
+
+        var xmlSelected by remember {
+            mutableStateOf(false)
+        }
+
         Row {
             FilterChip(
-                selected = false,
-                onClick = { /*TODO*/ },
+                selected = composeSelected,
+                onClick = {
+                    composeSelected = !composeSelected
+                },
                 label = {
                     Text(text = "Compose")
                 }
@@ -68,8 +78,10 @@ fun SettingScreen() {
             Spacer(modifier = Modifier.padding(15.dp))
 
             FilterChip(
-                selected = false,
-                onClick = { /*TODO*/ },
+                selected = xmlSelected,
+                onClick = {
+                    xmlSelected = !xmlSelected
+                },
                 label = {
                     Text(text = "XML")
                 }
