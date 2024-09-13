@@ -82,3 +82,7 @@ data class NavigationItem(
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector
 )
+
+class SettingsScreen {
+
+}
