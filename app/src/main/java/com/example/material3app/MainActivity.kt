@@ -181,7 +181,7 @@ fun Material3TopAppBar() {
         ),
         title = {
             //titulo de la barra de navegacion
-            Text(text = "Mi Aplicacion")
+            Text(text = "Dog App")
         }
     )
 }

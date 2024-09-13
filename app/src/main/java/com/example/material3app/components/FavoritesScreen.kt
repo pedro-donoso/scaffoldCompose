@@ -8,13 +8,21 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import coil.compose.AsyncImage
 
 @Composable
@@ -87,9 +95,21 @@ fun FavoriteScreen() {
         ) {
             items(dogList) { dog ->
                 Card(
-                    modifier = Modifier.padding(vertical = 8.dp)
+                    modifier = Modifier.padding(vertical = 4.dp)
                 ) {
                     Box(modifier = Modifier.height(200.dp)) {
+                        
+                        IconButton(
+                            modifier = Modifier
+                                .zIndex(1f)
+                                .align(Alignment.TopEnd),
+                            onClick = { }) {
+                            Icon(imageVector = if (dog.isFavorite) Icons.Filled.Favorite
+                            else Icons.Outlined.FavoriteBorder,
+                                contentDescription = null)
+                            
+                        }
+                        
                         AsyncImage(
                             model = dog.image,
                             contentDescription = null,
