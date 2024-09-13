@@ -60,21 +60,25 @@ fun SettingScreen() {
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        var selectedOption by remember {
-            mutableStateOf("")
+        var composeSelected by remember {
+            mutableStateOf(false)
+        }
+
+        var xmlSelected by remember {
+            mutableStateOf(false)
         }
 
         Row {
             FilterChip(
-                selected = selectedOption == "Compose",
+                selected = composeSelected,
                 onClick = {
-                    selectedOption = "Compose"
+                    composeSelected = !composeSelected
                 },
                 label = {
                     Text(text = "Compose")
                 },
                 leadingIcon = {
-                    AnimatedVisibility(visible = selectedOption == "Compose") {
+                    AnimatedVisibility(visible = composeSelected) {
                         Icon(imageVector = Icons.Filled.Done, contentDescription = null)
                     }
                 }
@@ -83,15 +87,15 @@ fun SettingScreen() {
             Spacer(modifier = Modifier.padding(15.dp))
 
             FilterChip(
-                selected = selectedOption == "XML",
+                selected = xmlSelected,
                 onClick = {
-                    selectedOption = "XML"
+                    xmlSelected = !xmlSelected
                 },
                 label = {
                     Text(text = "XML")
                 },
                 leadingIcon = {
-                    AnimatedVisibility(visible = selectedOption == "XML") {
+                    AnimatedVisibility(visible = xmlSelected) {
                         Icon(imageVector = Icons.Filled.Done, contentDescription = null)
                     }
                 }
