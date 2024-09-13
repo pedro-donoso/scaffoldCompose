@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Slider
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -113,11 +114,24 @@ fun SettingScreen() {
         Text(text = "Compose Skills: ${composeSkills.toInt()}")
 
         Slider(
-            value = composeSkills, onValueChange = {newValue ->
-            composeSkills = newValue
-        },
+            value = composeSkills, onValueChange = { newValue ->
+                composeSkills = newValue
+            },
             steps = 4,
             valueRange = 1f..5f
+        )
+
+        Spacer(modifier = Modifier.height(30.dp))
+
+        var darkModeEnabled by remember {
+            mutableStateOf(false)
+        }
+
+        Text(text = "Dark mode is enabled: $darkModeEnabled")
+
+        Switch(checked = darkModeEnabled, onCheckedChange = { newValue ->
+            darkModeEnabled = newValue
+        }
         )
     }
 }
