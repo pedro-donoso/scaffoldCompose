@@ -11,10 +11,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -101,5 +103,21 @@ fun SettingScreen() {
                 }
             )
         }
+
+        Spacer(modifier = Modifier.height(30.dp))
+
+        var composeSkills by remember {
+            mutableFloatStateOf(1f)
+        }
+
+        Text(text = "Compose Skills: ${composeSkills.toInt()}")
+
+        Slider(
+            value = composeSkills, onValueChange = {newValue ->
+            composeSkills = newValue
+        },
+            steps = 4,
+            valueRange = 1f..5f
+        )
     }
 }
