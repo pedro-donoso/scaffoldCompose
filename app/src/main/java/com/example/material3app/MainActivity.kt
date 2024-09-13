@@ -48,20 +48,29 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.DialogProperties
 import coil.compose.AsyncImage
+import com.example.material3app.components.BottomNavigationBar
+import com.example.material3app.components.FavoriteScreen
+import com.example.material3app.components.SettingScreen
 import com.example.material3app.ui.theme.Material3AppTheme
 
 //extiende de ComponentActivity para poder usar el setContent
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            //tema de la aplicacion
+            //aplica el tema de la aplicacion
             Material3AppTheme {
 
                 var showDialog by remember {
                     mutableStateOf(false)
+                }
+
+                var selectedItemIndex by remember {
+                    mutableStateOf(0)
                 }
 
                 if (showDialog) {
@@ -90,7 +99,11 @@ class MainActivity : ComponentActivity() {
                         Material3TopAppBar()
                     },
                     bottomBar = {
-                        Material3BottomAppBar()
+                        BottomNavigationBar(
+                            onItemSelected = {actualIndex ->
+                                selectedItemIndex = actualIndex
+                            }
+                        )
                     }
                 ) { paddingValues ->
                     //contenido de la pantalla
@@ -107,8 +120,21 @@ class MainActivity : ComponentActivity() {
                                 .verticalScroll(rememberScrollState())
                         ) {
                             //agrega tarjetas
-                            MaterialDogCard()
-                            MaterialDogCard()
+                            when(selectedItemIndex) {
+                                0 -> {
+                                    MaterialDogCard()
+                                    MaterialDogCard()
+                                }
+                                1 -> {
+                                    FavoriteScreen()
+                                }
+                                2 -> {
+                                    Text(text = "Notifications")
+                                }
+                                3 -> {
+                                    SettingScreen()
+                                }
+                            }
                         }
                     }
                 }
@@ -165,9 +191,14 @@ fun Material3AlertDialog(
     onDismiss: () -> Unit
 ) {
     AlertDialog(
-
-        containerColor = MaterialTheme.colorScheme.primary,
-
+        properties = DialogProperties(
+            dismissOnBackPress = false,
+            dismissOnClickOutside = false
+        ),
+        containerColor = MaterialTheme.colorScheme.background,
+        titleContentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+        textContentColor = MaterialTheme.colorScheme.onTertiaryContainer,
+        iconContentColor = MaterialTheme.colorScheme.onTertiaryContainer,
         onDismissRequest = onDismiss,
         confirmButton = {
             TextButton(onClick = {
@@ -188,6 +219,12 @@ fun Material3AlertDialog(
         },
         text = {
             Text(text = "Do you want to call my dog?")
+        },
+        icon = {
+            Icon(
+                imageVector = Icons.Filled.Call,
+                contentDescription = null
+            )
         }
     )
 }
