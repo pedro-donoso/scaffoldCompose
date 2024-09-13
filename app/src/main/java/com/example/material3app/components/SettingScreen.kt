@@ -12,19 +12,35 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 
 @Composable
+//pantalla de configuracion
 fun SettingScreen() {
 
+    //estado del campo de texto
     var userName by remember {
+
+        //valor inicial del campo de texto
         mutableStateOf("")
     }
 
+    //estructura de la pantalla
     Column(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start
     ){
+
+        //texto de la pantalla
         Text(text = "Your user name is: $userName")
 
-        TextField(value = "userName", onValueChange = { newValue ->
+        //campo de texto
+        TextField(
+            value = userName,
+            label = {
+                Text(text = "Add your name here")
+                    },
+            placeholder = {
+                Text(text = "User name")
+            },
+            onValueChange = { newValue ->
             userName = newValue
         } )
     }
