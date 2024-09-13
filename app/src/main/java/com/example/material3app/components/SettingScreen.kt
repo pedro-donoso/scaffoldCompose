@@ -46,7 +46,7 @@ fun SettingScreen() {
     ) {
 
         //texto de la pantalla
-        Text(text = "Your user name is: $userName")
+        Text(text = "Your Dog's name is: $userName")
 
         //campo de texto
         TextField(
@@ -55,7 +55,7 @@ fun SettingScreen() {
                 Text(text = "Add your name here")
             },
             placeholder = {
-                Text(text = "User name")
+                Text(text = "Dog name")
             },
             onValueChange = { newValue ->
                 userName = newValue
@@ -73,6 +73,12 @@ fun SettingScreen() {
             mutableStateOf(false)
         }
 
+        var playfulSelected by remember {
+            mutableStateOf(false)
+        }
+
+        Text(text = "Characteristics of your dog: ")
+
         Row {
             FilterChip(
                 selected = composeSelected,
@@ -80,7 +86,7 @@ fun SettingScreen() {
                     composeSelected = !composeSelected
                 },
                 label = {
-                    Text(text = "Compose")
+                    Text(text = "Puppy")
                 },
                 leadingIcon = {
                     AnimatedVisibility(visible = composeSelected) {
@@ -97,10 +103,27 @@ fun SettingScreen() {
                     xmlSelected = !xmlSelected
                 },
                 label = {
-                    Text(text = "XML")
+                    Text(text = "Rescued")
                 },
                 leadingIcon = {
                     AnimatedVisibility(visible = xmlSelected) {
+                        Icon(imageVector = Icons.Filled.Done, contentDescription = null)
+                    }
+                }
+            )
+
+            Spacer(modifier = Modifier.padding(15.dp))
+
+            FilterChip(
+                selected = playfulSelected,
+                onClick = {
+                    playfulSelected = !playfulSelected
+                },
+                label = {
+                    Text(text = "Playful")
+                },
+                leadingIcon = {
+                    AnimatedVisibility(visible = playfulSelected) {
                         Icon(imageVector = Icons.Filled.Done, contentDescription = null)
                     }
                 }
@@ -113,7 +136,7 @@ fun SettingScreen() {
             mutableFloatStateOf(1f)
         }
 
-        Text(text = "Compose Skills: ${composeSkills.toInt()}")
+        Text(text = "Your Dog's age: ${composeSkills.toInt()}")
 
         Slider(
             value = composeSkills, onValueChange = { newValue ->
@@ -129,7 +152,7 @@ fun SettingScreen() {
             mutableStateOf(false)
         }
 
-        Text(text = "Dark mode is enabled: $darkModeEnabled")
+        Text(text = "I agree to take care of him: $darkModeEnabled")
 
         Switch(
             thumbContent = {
