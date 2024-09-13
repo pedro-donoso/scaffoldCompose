@@ -51,6 +51,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.DialogProperties
 import coil.compose.AsyncImage
 import com.example.material3app.components.BottomNavigationBar
+import com.example.material3app.components.FavoriteScreen
 import com.example.material3app.components.SettingScreen
 import com.example.material3app.ui.theme.Material3AppTheme
 
@@ -125,7 +126,7 @@ class MainActivity : ComponentActivity() {
                                     MaterialDogCard()
                                 }
                                 1 -> {
-                                    Text(text = "Favorites")
+                                    FavoriteScreen()
                                 }
                                 2 -> {
                                     Text(text = "Notifications")
