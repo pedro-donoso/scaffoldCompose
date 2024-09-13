@@ -73,3 +73,5 @@ data class Dog(
     val image: String,
     val isFavorite: Boolean = false
 )
+
+//funciona
