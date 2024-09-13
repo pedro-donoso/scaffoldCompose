@@ -1,12 +1,16 @@
 package com.example.material3app.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -56,37 +60,42 @@ fun SettingScreen() {
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        var composeSelected by remember {
-            mutableStateOf(false)
-        }
-
-        var xmlSelected by remember {
-            mutableStateOf(false)
+        var selectedOption by remember {
+            mutableStateOf("")
         }
 
         Row {
             FilterChip(
-                selected = composeSelected,
+                selected = selectedOption == "Compose",
                 onClick = {
-                    composeSelected = !composeSelected
+                    selectedOption = "Compose"
                 },
                 label = {
                     Text(text = "Compose")
+                },
+                leadingIcon = {
+                    AnimatedVisibility(visible = selectedOption == "Compose") {
+                        Icon(imageVector = Icons.Filled.Done, contentDescription = null)
+                    }
                 }
             )
 
             Spacer(modifier = Modifier.padding(15.dp))
 
             FilterChip(
-                selected = xmlSelected,
+                selected = selectedOption == "XML",
                 onClick = {
-                    xmlSelected = !xmlSelected
+                    selectedOption = "XML"
                 },
                 label = {
                     Text(text = "XML")
+                },
+                leadingIcon = {
+                    AnimatedVisibility(visible = selectedOption == "XML") {
+                        Icon(imageVector = Icons.Filled.Done, contentDescription = null)
+                    }
                 }
             )
         }
-
     }
 }
