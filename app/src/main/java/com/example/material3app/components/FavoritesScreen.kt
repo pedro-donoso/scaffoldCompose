@@ -1,5 +1,6 @@
 package com.example.material3app.components
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.fillMaxSize
@@ -7,6 +8,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.runtime.Composable
@@ -29,6 +33,18 @@ fun FavoriteScreen() {
     val image3 =
         "https://images.unsplash.com/photo-1444212477490-ca407925329e?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 
+    val image4 =
+    "https://images.unsplash.com/photo-1532592333381-a141e3f197c9?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+
+    val image5 =
+    "https://images.unsplash.com/photo-1510771463146-e89e6e86560e?q=80&w=1362&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+
+    val image6 =
+    "https://images.unsplash.com/photo-1507146426996-ef05306b995a?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+
+    val image7 =
+    "https://images.unsplash.com/photo-1561037404-61cd46aa615b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+
     var dogList = remember {
         mutableStateListOf<Dog>(
             Dog(
@@ -42,6 +58,22 @@ fun FavoriteScreen() {
             Dog(
                 "Kira",
                 image3
+            ),
+            Dog(
+                "Lola",
+                image4
+            ),
+            Dog(
+                "Toby",
+                image5
+            ),
+            Dog(
+                "Nina",
+                image6
+            ),
+            Dog(
+                "Lulu",
+                image7
             )
         )
     }
@@ -49,15 +81,21 @@ fun FavoriteScreen() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(400.dp)
+            .height(800.dp)
     ) {
-        LazyColumn {
+        
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            modifier = Modifier.padding(horizontal = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
             items(dogList) { dog ->
                 Card(
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+                    modifier = Modifier.padding(vertical = 8.dp)
                 ) {
                     Box(modifier = Modifier.height(200.dp)) {
-                        AsyncImage(model = dog.image,
+                        AsyncImage(
+                            model = dog.image,
                             contentDescription = null,
                             contentScale = ContentScale.Crop
                         )
@@ -65,6 +103,21 @@ fun FavoriteScreen() {
                 }
             }
         }
+        
+//        LazyColumn {
+//            items(dogList) { dog ->
+//                Card(
+//                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+//                ) {
+//                    Box(modifier = Modifier.height(200.dp)) {
+//                        AsyncImage(model = dog.image,
+//                            contentDescription = null,
+//                            contentScale = ContentScale.Crop
+//                        )
+//                    }
+//                }
+//            }
+//        }
     }
 }
 
@@ -73,5 +126,3 @@ data class Dog(
     val image: String,
     val isFavorite: Boolean = false
 )
-
-//funciona
