@@ -8,7 +8,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Slider
@@ -129,7 +131,13 @@ fun SettingScreen() {
 
         Text(text = "Dark mode is enabled: $darkModeEnabled")
 
-        Switch(checked = darkModeEnabled, onCheckedChange = { newValue ->
+        Switch(
+            thumbContent = {
+                AnimatedVisibility(visible = darkModeEnabled) {
+                    Icon(imageVector = Icons.Filled.CheckCircle, contentDescription = null)
+                }
+            },
+            checked = darkModeEnabled, onCheckedChange = { newValue ->
             darkModeEnabled = newValue
         }
         )
