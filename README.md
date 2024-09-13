@@ -1,6 +1,7 @@
-![card](https://github.com/user-attachments/assets/92a60407-c0c2-42e6-bd06-9df1815f2efd)
+![home](https://github.com/user-attachments/assets/46bb874e-2cae-4ff8-946e-d085aac5342c)
 
-![darkmode](https://github.com/user-attachments/assets/14426182-4399-4c77-a51f-d744900e9774)
+![settings](https://github.com/user-attachments/assets/50749100-a086-47da-a109-42751eab5da8)
 
-![fotos](https://github.com/user-attachments/assets/737e0c3b-d312-417d-b326-e5d62297ac95)
+![favourites](https://github.com/user-attachments/assets/ec90c03d-2ef2-4e86-bc7c-56a1b4af00f7)
+
 
