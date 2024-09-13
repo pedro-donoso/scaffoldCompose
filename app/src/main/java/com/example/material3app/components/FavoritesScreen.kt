@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.Favorite
@@ -90,13 +91,15 @@ fun FavoriteScreen() {
             .fillMaxWidth()
             .height(800.dp)
     ) {
-        
+
+        val dogListArray = dogList.toTypedArray()
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             modifier = Modifier.padding(horizontal = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(dogList) { dog ->
+            itemsIndexed(dogList.toList()) { index, dog ->
                 Card(
                     modifier = Modifier.padding(vertical = 4.dp)
                 ) {
@@ -110,11 +113,15 @@ fun FavoriteScreen() {
                             modifier = Modifier
                                 .zIndex(1f)
                                 .align(Alignment.TopEnd),
-                            onClick = { }) {
+                            onClick = {
+                                dogList.removeAt(index)
+                                dogList.add(index, dog.copy(isFavorite = !dog.isFavorite))
+
+                            }) {
                             Icon(imageVector = if (dog.isFavorite) Icons.Filled.Favorite
                             else Icons.Outlined.FavoriteBorder,
-                                contentDescription = null)
-                            
+                                contentDescription = null
+                            )
                         }
                         
                         AsyncImage(
@@ -126,21 +133,6 @@ fun FavoriteScreen() {
                 }
             }
         }
-        
-//        LazyColumn {
-//            items(dogList) { dog ->
-//                Card(
-//                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-//                ) {
-//                    Box(modifier = Modifier.height(200.dp)) {
-//                        AsyncImage(model = dog.image,
-//                            contentDescription = null,
-//                            contentScale = ContentScale.Crop
-//                        )
-//                    }
-//                }
-//            }
-//        }
     }
 }
 
